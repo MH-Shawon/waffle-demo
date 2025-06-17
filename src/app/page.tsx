@@ -1,12 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Menu from "@/components/Menu";
 import CustomerReviews from "@/components/CustomerReviews";
 import Gallery from "@/components/Gallery";
 import Branches from "@/components/Branches";
 import Footer from "@/components/Footer";
 import Container from "@/components/Container";
 import SignatureCardsStack from "@/components/SignatureCardsStack";
+import Menu from "@/components/menu/Menu";
 
 export default function Home() {
   return (
