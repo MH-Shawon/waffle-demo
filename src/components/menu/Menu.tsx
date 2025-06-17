@@ -36,8 +36,47 @@ export default function Menu() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const leftColumnVariants: Variants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.4, 0, 0.2, 1],
+        delay: 0.3,
+      },
+    },
+  };
+
+  const middleColumnVariants: Variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.4, 0, 0.2, 1],
+        delay: 0.6,
+      },
+    },
+  };
+
+  const rightColumnVariants: Variants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.4, 0, 0.2, 1],
+        delay: 0.9,
       },
     },
   };
@@ -48,7 +87,7 @@ export default function Menu() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.8,
         ease: [0.4, 0, 0.2, 1],
       },
     },
@@ -60,7 +99,7 @@ export default function Menu() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 1,
         ease: [0.4, 0, 0.2, 1],
       },
     },
@@ -72,9 +111,9 @@ export default function Menu() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: [0.4, 0, 0.2, 1],
-        delay: 0.2,
+        delay: 0.4,
       },
     },
   };
@@ -112,11 +151,14 @@ export default function Menu() {
             className="grid grid-cols-[0.85fr_1fr_0.85fr] gap-4 max-w-5xl mx-auto"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
             exit="hidden"
           >
-            {/* Left Column - Vertically centered */}
-            <motion.div className="flex flex-col gap-4 justify-center">
+            {/* Left Column - Slides from left */}
+            <motion.div
+              className="flex flex-col gap-4 justify-center"
+              variants={leftColumnVariants}
+            >
               {columnItems.left.map((item) => (
                 <motion.div key={item.id} variants={itemVariants}>
                   <MenuItemCard item={item} isMiddleColumn={false} />
@@ -137,8 +179,11 @@ export default function Menu() {
               ))}
             </motion.div>
 
-            {/* Middle Column - Full height */}
-            <motion.div className="flex flex-col gap-4">
+            {/* Middle Column - Slides from bottom */}
+            <motion.div
+              className="flex flex-col gap-4"
+              variants={middleColumnVariants}
+            >
               {columnItems.middle.map((item) => (
                 <motion.div key={item.id} variants={itemVariants}>
                   <MenuItemCard item={item} isMiddleColumn={true} />
@@ -159,8 +204,11 @@ export default function Menu() {
               ))}
             </motion.div>
 
-            {/* Right Column - Vertically centered */}
-            <motion.div className="flex flex-col gap-4 justify-center">
+            {/* Right Column - Slides from right */}
+            <motion.div
+              className="flex flex-col gap-4 justify-center"
+              variants={rightColumnVariants}
+            >
               {columnItems.right.map((item) => (
                 <motion.div key={item.id} variants={itemVariants}>
                   <MenuItemCard item={item} isMiddleColumn={false} />
@@ -188,7 +236,7 @@ export default function Menu() {
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
         >
           <p className="text-sm text-gray-500">
             Showing {filteredItems.length} items in{" "}
