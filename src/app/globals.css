@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #faebd6;
   --foreground: #171717;
+  --font-denk: "Denk One", sans-serif;
+  --font-bai-jamjuree: "Bai Jamjuree", sans-serif;
 }
 
 @theme inline {
@@ -14,13 +16,61 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #faebd6;
+    --foreground: #171717;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .font-denk {
+    font-family: var(--font-denk-one);
+  }
+
+  .font-bai {
+    font-family: var(--font-bai-jamjuree);
+  }
+}
+
+@keyframes marquee-left-to-right {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee-right-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee-left-to-right {
+  animation: marquee-left-to-right var(--duration) linear infinite;
+}
+
+.animate-marquee-right-to-left {
+  animation: marquee-right-to-left var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
 }
