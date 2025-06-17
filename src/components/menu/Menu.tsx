@@ -231,18 +231,7 @@ export default function Menu() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Results Count */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          <p className="text-sm text-gray-500">
-            Showing {filteredItems.length} items in{" "}
-            {categories.find((cat) => cat.id === activeCategory)?.name}
-          </p>
-        </motion.div>
+      
       </div>
     </section>
   );

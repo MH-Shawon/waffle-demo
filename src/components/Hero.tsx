@@ -22,6 +22,81 @@ interface ImageSet {
   right: ImagePosition[];
 }
 
+const imageSets: ImageSet[] = [
+  {
+    left: [
+      {
+        src: "/assets/Images/item1.png",
+        alt: "Waffle 1",
+        top: "25%",
+        left: "8%",
+      },
+      {
+        src: "/assets/Images/popularItems2.jpg",
+        alt: "Waffle 2",
+        top: "65%",
+        left: "12%",
+      },
+    ],
+    right: [
+      {
+        src: "/assets/Images/item3.png",
+        alt: "Waffle 3",
+        top: "45%",
+        right: "10%",
+      },
+    ],
+  },
+  {
+    left: [
+      {
+        src: "/assets/Images/popularItems1.jpg",
+        alt: "Waffle 4",
+        top: "30%",
+        left: "6%",
+      },
+      {
+        src: "/assets/Images/item2.png",
+        alt: "Waffle 5",
+        top: "60%",
+        left: "14%",
+      },
+    ],
+    right: [
+      {
+        src: "/assets/Images/popularItems3.jpg",
+        alt: "Waffle 6",
+        top: "45%",
+        right: "12%",
+      },
+    ],
+  },
+  {
+    left: [
+      {
+        src: "/assets/Images/item4.png",
+        alt: "Waffle 7",
+        top: "22%",
+        left: "10%",
+      },
+      {
+        src: "/assets/Images/popularItems4.jpg",
+        alt: "Waffle 8",
+        top: "68%",
+        left: "8%",
+      },
+    ],
+    right: [
+      {
+        src: "/assets/Images/item1.png",
+        alt: "Waffle 9",
+        top: "45%",
+        right: "8%",
+      },
+    ],
+  },
+];
+
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorSide, setCursorSide] = useState<"left" | "right" | "center">(
@@ -67,7 +142,7 @@ export default function Hero() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [imageSets.length]);
 
   // Waffle-specific image collections
   const itemImages: Record<string, ImagePosition[]> = {
@@ -202,82 +277,6 @@ export default function Hero() {
       },
     ],
   };
-
-  // Image sets for 3-image display
-  const imageSets: ImageSet[] = [
-    {
-      left: [
-        {
-          src: "/assets/Images/item1.png",
-          alt: "Waffle 1",
-          top: "25%",
-          left: "8%",
-        },
-        {
-          src: "/assets/Images/popularItems2.jpg",
-          alt: "Waffle 2",
-          top: "65%",
-          left: "12%",
-        },
-      ],
-      right: [
-        {
-          src: "/assets/Images/item3.png",
-          alt: "Waffle 3",
-          top: "45%",
-          right: "10%",
-        },
-      ],
-    },
-    {
-      left: [
-        {
-          src: "/assets/Images/popularItems1.jpg",
-          alt: "Waffle 4",
-          top: "30%",
-          left: "6%",
-        },
-        {
-          src: "/assets/Images/item2.png",
-          alt: "Waffle 5",
-          top: "60%",
-          left: "14%",
-        },
-      ],
-      right: [
-        {
-          src: "/assets/Images/popularItems3.jpg",
-          alt: "Waffle 6",
-          top: "45%",
-          right: "12%",
-        },
-      ],
-    },
-    {
-      left: [
-        {
-          src: "/assets/Images/item4.png",
-          alt: "Waffle 7",
-          top: "22%",
-          left: "10%",
-        },
-        {
-          src: "/assets/Images/popularItems4.jpg",
-          alt: "Waffle 8",
-          top: "68%",
-          left: "8%",
-        },
-      ],
-      right: [
-        {
-          src: "/assets/Images/item1.png",
-          alt: "Waffle 9",
-          top: "45%",
-          right: "8%",
-        },
-      ],
-    },
-  ];
 
   const handleItemHover = (itemName: string) => {
     setHoveredItem(itemName);
