@@ -187,7 +187,7 @@ function StickyMotionCard({ index, card }: { index: number; card: CardData }) {
     <motion.div
       ref={ref}
       className="flex-none h-[655px] sticky w-[1120px] will-change-transform mx-auto"
-      style={{ top: `${250 - index * 50}px`, zIndex: 100 + index }}
+      style={{ top: `${350 - index * 50}px`, zIndex: 100 + index }}
       initial={{ opacity: 0, y: 100, rotate: initialRotate }}
       animate={
         hasAnimated

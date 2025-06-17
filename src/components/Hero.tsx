@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu } from "lucide-react";
+
 import { useState, useEffect } from "react";
 import {
   motion,

@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <div className="pt-[250px]"></div>
+      <div className="pt-[350px]"></div>
       <Hero />
       <SignatureCardsStack />
       <Container>

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ReviewCardProps {
   img: string;
@@ -56,10 +57,12 @@ const ReviewCard = ({ img, name, username, body, rating }: ReviewCardProps) => {
       </blockquote>
 
       <div className="flex flex-row items-center gap-2 mt-auto">
-        <img
-          className="rounded-full w-9 h-9 object-cover"
+        <Image
+          className="rounded-full object-cover"
           alt={name}
           src={img}
+          width={36}
+          height={36}
         />
         <div className="flex flex-col">
           <figcaption className="text-base font-semibold text-gray-900">

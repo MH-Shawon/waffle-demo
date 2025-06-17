@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Branches = () => {
   const branches = [
@@ -41,9 +42,11 @@ const Branches = () => {
         {/* Map Placeholder */}
         <div className="w-full md:w-1/2 bg-[#C7C3B7] rounded-xl overflow-hidden shadow-lg aspect-w-16 aspect-h-9 md:aspect-h-auto">
           {/* Image of the map will go here */}
-          <img
+          <Image
             src="/assets/Images/map.svg"
             alt="Map of cafes"
+            width={500}
+            height={300}
             className="w-full h-full object-cover"
           />
         </div>
